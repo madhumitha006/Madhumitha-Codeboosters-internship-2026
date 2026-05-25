@@ -1,1 +1,1199 @@
-
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMygG6F0bfNq3a3LQ0JgG52",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/madhumitha006/Madhumitha-Codeboosters-internship-2026/blob/main/Phase_01_Data_Engineering/Day_01_Introduction_to_Data_Engineering\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "b3f60UYx9Bq5",
+        "outputId": "c1e5f68d-068c-407f-86f3-346fe038b309"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Libraries imported successfully\n"
+          ]
+        }
+      ],
+      "source": [
+        "import pandas as pd\n",
+        "print(\"Libraries imported successfully\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df = pd.read_csv(\"student_performance.csv\")\n"
+      ],
+      "metadata": {
+        "id": "PjezJkWf9VKt"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Dataset imported successfully\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Inl1F97O9uN8",
+        "outputId": "1de9c871-2770-4b67-bbaf-9fbb7f872601"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Dataset imported successfully\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Missing values in each column:\")\n",
+        "print(df.isnull().sum())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Q8O8dmnD9xPH",
+        "outputId": "b00c1f9c-f714-4004-fd18-1bdc5504ea5a"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Missing values in each column:\n",
+            "student_id               0\n",
+            "name                     0\n",
+            "age                      0\n",
+            "gender                   0\n",
+            "department               0\n",
+            "semester                 0\n",
+            "math_score               0\n",
+            "science_score            0\n",
+            "english_score            0\n",
+            "programming_score        0\n",
+            "attendance_percentage    0\n",
+            "city                     0\n",
+            "admission_year           0\n",
+            "dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"/total missing values:\",df.isnull().sum().sum())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "N-n02xna-G6d",
+        "outputId": "4b3a3973-907c-4e08-bee9-9b911c3b3a9d"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "/total missing values: 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Student Names:\")\n",
+        "print(df['name'])\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-HqOLtYi-OpP",
+        "outputId": "068769fc-af19-465e-8b88-a9acf0f45a39"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Student Names:\n",
+            "0       Aarav Sharma\n",
+            "1        Priya Patel\n",
+            "2        Rohit Verma\n",
+            "3        Sneha Reddy\n",
+            "4         Arjun Nair\n",
+            "5        Meera Joshi\n",
+            "6        Kiran Kumar\n",
+            "7        Divya Singh\n",
+            "8       Rahul Mishra\n",
+            "9         Ananya Das\n",
+            "10       Vikram Iyer\n",
+            "11       Pooja Gupta\n",
+            "12        Suresh Rao\n",
+            "13     Kavya Nambiar\n",
+            "14       Ajay Tiwari\n",
+            "15      Ritu Agarwal\n",
+            "16      Manoj Pandey\n",
+            "17    Swati Kulkarni\n",
+            "18    Deepak Chauhan\n",
+            "19      Nisha Kapoor\n",
+            "20     Harish Pillai\n",
+            "21       Tanvi Mehta\n",
+            "22      Sanjay Dubey\n",
+            "23     Preeti Saxena\n",
+            "24         Amit Bose\n",
+            "25        Rekha Nair\n",
+            "26     Gaurav Shukla\n",
+            "27     Sunita Pillai\n",
+            "28        Nitin Jain\n",
+            "29    Akanksha Yadav\n",
+            "Name: name, dtype: object\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "df.tail()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 295
+        },
+        "id": "lTY48_sb-uT-",
+        "outputId": "f83cdb27-3668-48a5-c93b-389665175f20"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "    student_id            name  age  gender        department  semester  \\\n",
+              "25        1026      Rekha Nair   20  Female       Electronics         2   \n",
+              "26        1027   Gaurav Shukla   21    Male  Computer Science         2   \n",
+              "27        1028   Sunita Pillai   19  Female             Civil         2   \n",
+              "28        1029      Nitin Jain   20    Male        Mechanical         2   \n",
+              "29        1030  Akanksha Yadav   19  Female  Computer Science         2   \n",
+              "\n",
+              "    math_score  science_score  english_score  programming_score  \\\n",
+              "25          72             77             73                 63   \n",
+              "26          84             79             75                 87   \n",
+              "27          60             65             68                 39   \n",
+              "28          75             76             70                 50   \n",
+              "29          91             93             87                 94   \n",
+              "\n",
+              "    attendance_percentage                city  admission_year  \n",
+              "25                     82               Kochi            2023  \n",
+              "26                     87             Lucknow            2023  \n",
+              "27                     73  Thiruvananthapuram            2023  \n",
+              "28                     84              Indore            2023  \n",
+              "29                     95                Agra            2023  "
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-af16be3e-5bcc-4757-8886-aa41ac9b2006\" class=\"colab-df-container\">\n",
+              "    <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>student_id</th>\n",
+              "      <th>name</th>\n",
+              "      <th>age</th>\n",
+              "      <th>gender</th>\n",
+              "      <th>department</th>\n",
+              "      <th>semester</th>\n",
+              "      <th>math_score</th>\n",
+              "      <th>science_score</th>\n",
+              "      <th>english_score</th>\n",
+              "      <th>programming_score</th>\n",
+              "      <th>attendance_percentage</th>\n",
+              "      <th>city</th>\n",
+              "      <th>admission_year</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>25</th>\n",
+              "      <td>1026</td>\n",
+              "      <td>Rekha Nair</td>\n",
+              "      <td>20</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Electronics</td>\n",
+              "      <td>2</td>\n",
+              "      <td>72</td>\n",
+              "      <td>77</td>\n",
+              "      <td>73</td>\n",
+              "      <td>63</td>\n",
+              "      <td>82</td>\n",
+              "      <td>Kochi</td>\n",
+              "      <td>2023</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>26</th>\n",
+              "      <td>1027</td>\n",
+              "      <td>Gaurav Shukla</td>\n",
+              "      <td>21</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>Computer Science</td>\n",
+              "      <td>2</td>\n",
+              "      <td>84</td>\n",
+              "      <td>79</td>\n",
+              "      <td>75</td>\n",
+              "      <td>87</td>\n",
+              "      <td>87</td>\n",
+              "      <td>Lucknow</td>\n",
+              "      <td>2023</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>27</th>\n",
+              "      <td>1028</td>\n",
+              "      <td>Sunita Pillai</td>\n",
+              "      <td>19</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Civil</td>\n",
+              "      <td>2</td>\n",
+              "      <td>60</td>\n",
+              "      <td>65</td>\n",
+              "      <td>68</td>\n",
+              "      <td>39</td>\n",
+              "      <td>73</td>\n",
+              "      <td>Thiruvananthapuram</td>\n",
+              "      <td>2023</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>28</th>\n",
+              "      <td>1029</td>\n",
+              "      <td>Nitin Jain</td>\n",
+              "      <td>20</td>\n",
+              "      <td>Male</td>\n",
+              "      <td>Mechanical</td>\n",
+              "      <td>2</td>\n",
+              "      <td>75</td>\n",
+              "      <td>76</td>\n",
+              "      <td>70</td>\n",
+              "      <td>50</td>\n",
+              "      <td>84</td>\n",
+              "      <td>Indore</td>\n",
+              "      <td>2023</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>29</th>\n",
+              "      <td>1030</td>\n",
+              "      <td>Akanksha Yadav</td>\n",
+              "      <td>19</td>\n",
+              "      <td>Female</td>\n",
+              "      <td>Computer Science</td>\n",
+              "      <td>2</td>\n",
+              "      <td>91</td>\n",
+              "      <td>93</td>\n",
+              "      <td>87</td>\n",
+              "      <td>94</td>\n",
+              "      <td>95</td>\n",
+              "      <td>Agra</td>\n",
+              "      <td>2023</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "    <div class=\"colab-df-buttons\">\n",
+              "\n",
+              "  <div class=\"colab-df-container\">\n",
+              "    <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-af16be3e-5bcc-4757-8886-aa41ac9b2006')\"\n",
+              "            title=\"Convert this dataframe to an interactive table.\"\n",
+              "            style=\"display:none;\">\n",
+              "\n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 -960 960 960\">\n",
+              "    <path d=\"M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z\"/>\n",
+              "  </svg>\n",
+              "    </button>\n",
+              "\n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-buttons div {\n",
+              "      margin-bottom: 4px;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "    <script>\n",
+              "      const buttonEl =\n",
+              "        document.querySelector('#df-af16be3e-5bcc-4757-8886-aa41ac9b2006 button.colab-df-convert');\n",
+              "      buttonEl.style.display =\n",
+              "        google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "      async function convertToInteractive(key) {\n",
+              "        const element = document.querySelector('#df-af16be3e-5bcc-4757-8886-aa41ac9b2006');\n",
+              "        const dataTable =\n",
+              "          await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                    [key], {});\n",
+              "        if (!dataTable) return;\n",
+              "\n",
+              "        const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "          '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "          + ' to learn more about interactive tables.';\n",
+              "        element.innerHTML = '';\n",
+              "        dataTable['output_type'] = 'display_data';\n",
+              "        await google.colab.output.renderOutput(dataTable, element);\n",
+              "        const docLink = document.createElement('div');\n",
+              "        docLink.innerHTML = docLinkHtml;\n",
+              "        element.appendChild(docLink);\n",
+              "      }\n",
+              "    </script>\n",
+              "  </div>\n",
+              "\n",
+              "\n",
+              "    </div>\n",
+              "  </div>\n"
+            ],
+            "application/vnd.google.colaboratory.intrinsic+json": {
+              "type": "dataframe",
+              "summary": "{\n  \"name\": \"df\",\n  \"rows\": 5,\n  \"fields\": [\n    {\n      \"column\": \"student_id\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 1,\n        \"min\": 1026,\n        \"max\": 1030,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          1027,\n          1030,\n          1028\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"name\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"Gaurav Shukla\",\n          \"Akanksha Yadav\",\n          \"Sunita Pillai\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"age\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 19,\n        \"max\": 21,\n        \"num_unique_values\": 3,\n        \"samples\": [\n          20,\n          21,\n          19\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"gender\",\n      \"properties\": {\n        \"dtype\": \"category\",\n        \"num_unique_values\": 2,\n        \"samples\": [\n          \"Male\",\n          \"Female\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"department\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 4,\n        \"samples\": [\n          \"Computer Science\",\n          \"Mechanical\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"semester\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 2,\n        \"max\": 2,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          2\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"math_score\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 11,\n        \"min\": 60,\n        \"max\": 91,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          84\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"science_score\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 10,\n        \"min\": 65,\n        \"max\": 93,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          79\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"english_score\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 7,\n        \"min\": 68,\n        \"max\": 87,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          75\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"programming_score\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 23,\n        \"min\": 39,\n        \"max\": 94,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          87\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"attendance_percentage\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 7,\n        \"min\": 73,\n        \"max\": 95,\n        \"num_unique_values\": 5,\n        \"samples\": [\n          87\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"city\",\n      \"properties\": {\n        \"dtype\": \"string\",\n        \"num_unique_values\": 5,\n        \"samples\": [\n          \"Lucknow\"\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    },\n    {\n      \"column\": \"admission_year\",\n      \"properties\": {\n        \"dtype\": \"number\",\n        \"std\": 0,\n        \"min\": 2023,\n        \"max\": 2023,\n        \"num_unique_values\": 1,\n        \"samples\": [\n          2023\n        ],\n        \"semantic_type\": \"\",\n        \"description\": \"\"\n      }\n    }\n  ]\n}"
+            }
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(df.dtypes)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "nrfI0tmE-7_e",
+        "outputId": "000451d1-720d-47f2-eac0-896f887fb7c5"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "student_id                int64\n",
+            "name                     object\n",
+            "age                       int64\n",
+            "gender                   object\n",
+            "department               object\n",
+            "semester                  int64\n",
+            "math_score                int64\n",
+            "science_score             int64\n",
+            "english_score             int64\n",
+            "programming_score         int64\n",
+            "attendance_percentage     int64\n",
+            "city                     object\n",
+            "admission_year            int64\n",
+            "dtype: object\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"\\nStatistical Summary:\")\n",
+        "print(df.describe())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "flKVdDiQ_Elf",
+        "outputId": "c970176d-2b6d-4bd7-fdc2-77afffc190fc"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Statistical Summary:\n",
+            "        student_id        age  semester  math_score  science_score  \\\n",
+            "count    30.000000  30.000000      30.0   30.000000      30.000000   \n",
+            "mean   1015.500000  19.733333       2.0   76.066667      77.833333   \n",
+            "std       8.803408   0.739680       0.0   11.467896       8.554423   \n",
+            "min    1001.000000  19.000000       2.0   56.000000      61.000000   \n",
+            "25%    1008.250000  19.000000       2.0   67.250000      71.250000   \n",
+            "50%    1015.500000  20.000000       2.0   75.500000      78.000000   \n",
+            "75%    1022.750000  20.000000       2.0   85.750000      83.750000   \n",
+            "max    1030.000000  21.000000       2.0   95.000000      93.000000   \n",
+            "\n",
+            "       english_score  programming_score  attendance_percentage  admission_year  \n",
+            "count      30.000000          30.000000              30.000000            30.0  \n",
+            "mean       74.166667          67.600000              84.500000          2023.0  \n",
+            "std        10.003735          21.041175               9.379913             0.0  \n",
+            "min        55.000000          38.000000              65.000000          2023.0  \n",
+            "25%        67.250000          49.250000              77.250000          2023.0  \n",
+            "50%        75.000000          66.000000              86.500000          2023.0  \n",
+            "75%        81.750000          88.750000              91.750000          2023.0  \n",
+            "max        90.000000          97.000000              98.000000          2023.0  \n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Departments in this dataset:\")\n",
+        "print(df['department'].unique())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IcF9Hnvh_STq",
+        "outputId": "94f70672-512d-4041-d627-90b16501e433"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Departments in this dataset:\n",
+            "['Computer Science' 'Electronics' 'Mechanical' 'Civil']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"\\nHow many students in each department:\")\n",
+        "print(df['department'].value_counts())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "PLno9I36_ask",
+        "outputId": "0e800eac-b2e5-4825-bd33-fb6d9608c6d5"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "How many students in each department:\n",
+            "department\n",
+            "Computer Science    13\n",
+            "Electronics          6\n",
+            "Mechanical           6\n",
+            "Civil                5\n",
+            "Name: count, dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "cs_students=df[df[\"department\"]==\"Computer Science\"]\n",
+        "print(\"Number of Computer Science students:\",len(cs_students))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "d8-8lwp-_sye",
+        "outputId": "0f0dbab7-7895-4714-d350-018b50b5373b"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Number of Computer Science students: 13\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"\\nComputer Science students:\")\n",
+        "print(cs_students[['name', 'math_score', 'programming_score', 'attendance_percentage']])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QEYHBqQXA7We",
+        "outputId": "655919d0-c5fe-49d3-e8d0-491a1c5dc90e"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\n",
+            "Computer Science students:\n",
+            "              name  math_score  programming_score  attendance_percentage\n",
+            "0     Aarav Sharma          85                 91                     92\n",
+            "1      Priya Patel          76                 79                     87\n",
+            "4       Arjun Nair          92                 95                     90\n",
+            "7      Divya Singh          88                 93                     96\n",
+            "9       Ananya Das          95                 97                     98\n",
+            "12      Suresh Rao          83                 88                     88\n",
+            "14     Ajay Tiwari          71                 76                     75\n",
+            "17  Swati Kulkarni          90                 92                     94\n",
+            "19    Nisha Kapoor          79                 83                     89\n",
+            "21     Tanvi Mehta          93                 96                     97\n",
+            "24       Amit Bose          86                 89                     91\n",
+            "26   Gaurav Shukla          84                 87                     87\n",
+            "29  Akanksha Yadav          91                 94                     95\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "high_attendance = df[df['attendance_percentage'] > 90]\n",
+        "print(f\"Students with attendance above 90%: {len(high_attendance)}\")\n",
+        "print(high_attendance[['name', 'attendance_percentage']])\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "kBOmLy1ABrxS",
+        "outputId": "b0f8b120-fda4-4ca7-e3fa-613252344b6e"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Students with attendance above 90%: 10\n",
+            "              name  attendance_percentage\n",
+            "0     Aarav Sharma                     92\n",
+            "3      Sneha Reddy                     95\n",
+            "7      Divya Singh                     96\n",
+            "9       Ananya Das                     98\n",
+            "13   Kavya Nambiar                     91\n",
+            "15    Ritu Agarwal                     93\n",
+            "17  Swati Kulkarni                     94\n",
+            "21     Tanvi Mehta                     97\n",
+            "24       Amit Bose                     91\n",
+            "29  Akanksha Yadav                     95\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df[\"total_score\"] = (\n",
+        "    df[\"math_score\"] +\n",
+        "    df[\"science_score\"] +\n",
+        "    df[\"programming_score\"]\n",
+        ")\n",
+        "dept_avg = df.groupby(\"department\")[\"total_score\"].mean().round(2)\n",
+        "\n",
+        "print(dept_avg)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ay5u0RflVRBd",
+        "outputId": "aa6b876d-ab81-4e50-94af-61cb163d5910"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "department\n",
+            "Civil               170.60\n",
+            "Computer Science    259.31\n",
+            "Electronics         206.67\n",
+            "Mechanical          196.83\n",
+            "Name: total_score, dtype: float64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"Average total score for each department:\")\n",
+        "print(dept_avg)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "CLHINKdCVyom",
+        "outputId": "1c0ec860-ee6d-40e6-f2d9-14fded77ac82"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Average total score for each department:\n",
+            "department\n",
+            "Civil               170.60\n",
+            "Computer Science    259.31\n",
+            "Electronics         206.67\n",
+            "Mechanical          196.83\n",
+            "Name: total_score, dtype: float64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df_sorted=df.sort_values(by=\"total_score\",ascending=False)\n",
+        "print(\"Top 10 students by Total Score: \")\n",
+        "print(df_sorted[['name','department','total_score','attendance_percentage']].head(10))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tq46yKbWWnF2",
+        "outputId": "656e4c22-986e-4c5f-b2d2-cf61b43e7ede"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Top 10 students by Total Score: \n",
+            "              name        department  total_score  attendance_percentage\n",
+            "9       Ananya Das  Computer Science          281                     98\n",
+            "21     Tanvi Mehta  Computer Science          279                     97\n",
+            "29  Akanksha Yadav  Computer Science          278                     95\n",
+            "4       Arjun Nair  Computer Science          275                     90\n",
+            "7      Divya Singh  Computer Science          272                     96\n",
+            "17  Swati Kulkarni  Computer Science          269                     94\n",
+            "24       Amit Bose  Computer Science          257                     91\n",
+            "12      Suresh Rao  Computer Science          257                     88\n",
+            "0     Aarav Sharma  Computer Science          254                     92\n",
+            "26   Gaurav Shukla  Computer Science          250                     87\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Pf4mpCkoYC_G"
+      },
+      "execution_count": 17,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Student data explorer\n",
+        "create a student performance explorer using python and pandas to analyze student data and generate a detailed report.\n",
+        "dataset columns:\n",
+        "name\n",
+        "gender\n",
+        "department\n",
+        "math_score\n",
+        "programming_score\n",
+        "attendance_percentage\n",
+        "total_score\n",
+        "tasks to perform:\n",
+        "1.display project title\n",
+        "print a formatted title with seprator lines\n",
+        "2.dataset overview\n",
+        "display:\n",
+        "\n",
+        "1.Total number of students\n",
+        "2.Total number of columns\n",
+        "3.number of unique departments\n",
+        "\n",
+        "3.department-wice analysis\n",
+        "display the count of students in each department\n",
+        "\n",
+        "4.Score analysis\n",
+        "find and display:\n",
+        "highest math score\n",
+        "lowest math score\n",
+        "average math score\n",
+        "average programming score\n",
+        "average attendance percentage\n",
+        "\n",
+        "5.Gender-wise analysis\n",
+        "calculate and display average total score grouped by gender\n",
+        "\n",
+        "6.Top performance\n",
+        "display the top 5 students based on total_score\n",
+        "show:\n",
+        "Student Name\n",
+        "Department\n",
+        "Total Score\n",
+        "\n",
+        "7.Attendance Analysis\n",
+        "Find students whose attendance is below 75%\n",
+        "Display:\n",
+        "Name\n",
+        "Department\n",
+        "Attendance Percentage\n",
+        "if all students have attendance above 75%\n",
+        "print a suitable message\n",
+        "concepts to use:\n",
+        "pandas,dataframe,groupby(),value_counts(),mean(),max(),min(),sort_values(),iterrows(),conditional staements,f-strings  "
+      ],
+      "metadata": {
+        "id": "iiVrR2ePhZsv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "df = pd.read_csv(\"student_performance.csv\")\n",
+        "df[\"total_score\"] = (\n",
+        "    df[\"math_score\"] +\n",
+        "    df[\"science_score\"] +\n",
+        "    df[\"programming_score\"]\n",
+        ")\n",
+        "\n",
+        "# =========================================\n",
+        "# 1. PROJECT TITLE\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"=\" * 50)\n",
+        "print(\"      STUDENT PERFORMANCE EXPLORER\")\n",
+        "print(\"=\" * 50)\n",
+        "\n",
+        "# =========================================\n",
+        "# 2. DATASET OVERVIEW\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nDATASET OVERVIEW\")\n",
+        "print(\"-\" * 30)\n",
+        "\n",
+        "print(f\"Total number of students : {df.shape[0]}\")\n",
+        "print(f\"Total number of columns  : {df.shape[1]}\")\n",
+        "print(f\"Unique departments       : {df['department'].nunique()}\")\n",
+        "\n",
+        "# =========================================\n",
+        "# 3. DEPARTMENT-WISE ANALYSIS\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nDEPARTMENT-WISE ANALYSIS\")\n",
+        "print(\"-\" * 30)\n",
+        "\n",
+        "dept_count = df['department'].value_counts()\n",
+        "\n",
+        "for dept, count in dept_count.items():\n",
+        "    print(f\"{dept} : {count} students\")\n",
+        "\n",
+        "# =========================================\n",
+        "# 4. SCORE ANALYSIS\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nSCORE ANALYSIS\")\n",
+        "print(\"-\" * 30)\n",
+        "\n",
+        "print(f\"Highest Math Score            : {df['math_score'].max()}\")\n",
+        "print(f\"Lowest Math Score             : {df['math_score'].min()}\")\n",
+        "print(f\"Average Programming Score     : {df['programming_score'].mean():.2f}\")\n",
+        "print(f\"Average Attendance Percentage : {df['attendance_percentage'].mean():.2f}\")\n",
+        "\n",
+        "# =========================================\n",
+        "# 5. GENDER-WISE ANALYSIS\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nGENDER-WISE ANALYSIS\")\n",
+        "print(\"-\" * 30)\n",
+        "\n",
+        "gender_avg = df.groupby('gender')['total_score'].mean().round(2)\n",
+        "\n",
+        "for gender, avg in gender_avg.items():\n",
+        "    print(f\"{gender} : {avg}\")\n",
+        "\n",
+        "# =========================================\n",
+        "# 6. TOP 5 STUDENTS\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nTOP 5 STUDENTS BASED ON TOTAL SCORE\")\n",
+        "print(\"-\" * 50)\n",
+        "\n",
+        "top_students = df.sort_values(by='total_score', ascending=False).head(5)\n",
+        "\n",
+        "for index, row in top_students.iterrows():\n",
+        "    print(f\"Name : {row['name']}\")\n",
+        "    print(f\"Department : {row['department']}\")\n",
+        "    print(f\"Total Score : {row['total_score']}\")\n",
+        "    print(\"-\" * 30)\n",
+        "\n",
+        "# =========================================\n",
+        "# 7. ATTENDANCE ANALYSIS\n",
+        "# =========================================\n",
+        "\n",
+        "print(\"\\nSTUDENTS WITH ATTENDANCE BELOW 75%\")\n",
+        "print(\"-\" * 40)\n",
+        "\n",
+        "low_attendance = df[df['attendance_percentage'] < 75]\n",
+        "\n",
+        "if len(low_attendance) > 0:\n",
+        "\n",
+        "    for index, row in low_attendance.iterrows():\n",
+        "        print(f\"Name : {row['name']}\")\n",
+        "        print(f\"Department : {row['department']}\")\n",
+        "        print(f\"Attendance Percentage : {row['attendance_percentage']}%\")\n",
+        "        print(\"-\" * 30)\n",
+        "\n",
+        "else:\n",
+        "    print(\"All students have attendance above 75%\")"
+      ],
+      "metadata": {
+        "id": "08fqj5rBnnch",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "2eb8c956-9278-4b73-a5bd-82cda98320bd"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "==================================================\n",
+            "      STUDENT PERFORMANCE EXPLORER\n",
+            "==================================================\n",
+            "\n",
+            "DATASET OVERVIEW\n",
+            "------------------------------\n",
+            "Total number of students : 30\n",
+            "Total number of columns  : 14\n",
+            "Unique departments       : 4\n",
+            "\n",
+            "DEPARTMENT-WISE ANALYSIS\n",
+            "------------------------------\n",
+            "Computer Science : 13 students\n",
+            "Electronics : 6 students\n",
+            "Mechanical : 6 students\n",
+            "Civil : 5 students\n",
+            "\n",
+            "SCORE ANALYSIS\n",
+            "------------------------------\n",
+            "Highest Math Score            : 95\n",
+            "Lowest Math Score             : 56\n",
+            "Average Programming Score     : 67.60\n",
+            "Average Attendance Percentage : 84.50\n",
+            "\n",
+            "GENDER-WISE ANALYSIS\n",
+            "------------------------------\n",
+            "Female : 229.87\n",
+            "Male : 213.13\n",
+            "\n",
+            "TOP 5 STUDENTS BASED ON TOTAL SCORE\n",
+            "--------------------------------------------------\n",
+            "Name : Ananya Das\n",
+            "Department : Computer Science\n",
+            "Total Score : 281\n",
+            "------------------------------\n",
+            "Name : Tanvi Mehta\n",
+            "Department : Computer Science\n",
+            "Total Score : 279\n",
+            "------------------------------\n",
+            "Name : Akanksha Yadav\n",
+            "Department : Computer Science\n",
+            "Total Score : 278\n",
+            "------------------------------\n",
+            "Name : Arjun Nair\n",
+            "Department : Computer Science\n",
+            "Total Score : 275\n",
+            "------------------------------\n",
+            "Name : Divya Singh\n",
+            "Department : Computer Science\n",
+            "Total Score : 272\n",
+            "------------------------------\n",
+            "\n",
+            "STUDENTS WITH ATTENDANCE BELOW 75%\n",
+            "----------------------------------------\n",
+            "Name : Meera Joshi\n",
+            "Department : Electronics\n",
+            "Attendance Percentage : 72%\n",
+            "------------------------------\n",
+            "Name : Rahul Mishra\n",
+            "Department : Mechanical\n",
+            "Attendance Percentage : 68%\n",
+            "------------------------------\n",
+            "Name : Manoj Pandey\n",
+            "Department : Civil\n",
+            "Attendance Percentage : 65%\n",
+            "------------------------------\n",
+            "Name : Harish Pillai\n",
+            "Department : Electronics\n",
+            "Attendance Percentage : 74%\n",
+            "------------------------------\n",
+            "Name : Sanjay Dubey\n",
+            "Department : Civil\n",
+            "Attendance Percentage : 70%\n",
+            "------------------------------\n",
+            "Name : Sunita Pillai\n",
+            "Department : Civil\n",
+            "Attendance Percentage : 73%\n",
+            "------------------------------\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# PRACTICE QUESTIONS:\n",
+        "\n",
+        "1. How many students are from the Electronics Department?\n",
+        "2. What is the average attendance of female students?\n",
+        "3. who is the student with the lowest programming score?\n",
+        "4. How many students scored above 80 in math?\n",
+        "5. What  is the average total_score for students with attendance above 90%?"
+      ],
+      "metadata": {
+        "id": "bzwTPUwe8MnS"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1. How many students are from the Electronics Department?\n",
+        "electronics_students = df[df['department'] == 'Electronics']\n",
+        "print(f\"Number of students from the Electronics Department: {len(electronics_students)}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "x6V1aRte8Oaa",
+        "outputId": "d8bcc3ee-8964-4869-ca7b-965df84ebf14"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Number of students from the Electronics Department: 6\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 2. What is the average attendance of female students?\n",
+        "average_attendance_female = df[df['gender'] == 'Female']['attendance_percentage'].mean().round(2)\n",
+        "print(f\"Average attendance of female students: {average_attendance_female}%\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VwFp3Zgz8RBo",
+        "outputId": "43850473-4afb-4e1b-ea09-4fc4efc23f33"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Average attendance of female students: 88.53%\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 3. Who is the student with the lowest programming score?\n",
+        "lowest_programming_score_student = df.loc[df['programming_score'].idxmin()]\n",
+        "print(f\"Student with the lowest programming score: {lowest_programming_score_student['name']} (Score: {lowest_programming_score_student['programming_score']})\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Z3Kc2kQY8UZE",
+        "outputId": "737efbbe-f9cb-48ab-eec4-5c8399faec6b"
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Student with the lowest programming score: Manoj Pandey (Score: 38)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 4. How many students scored above 80 in math?\n",
+        "students_above_80_math = df[df['math_score'] > 80]\n",
+        "print(f\"Number of students who scored above 80 in math: {len(students_above_80_math)}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tBvUsD148WxR",
+        "outputId": "31902fa5-0610-4a3b-c595-5f6fe6c2b5af"
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Number of students who scored above 80 in math: 11\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 5. What is the average total_score for students with attendance above 90%?\n",
+        "average_total_score_high_attendance = df[df['attendance_percentage'] > 90]['total_score'].mean().round(2)\n",
+        "print(f\"Average total score for students with attendance above 90%: {average_total_score_high_attendance}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Uz9Nivoe8ZX4",
+        "outputId": "df75e707-bda9-406f-b682-bb3d060c27a1"
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Average total score for students with attendance above 90%: 253.0\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
